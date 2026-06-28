@@ -328,6 +328,11 @@ function search(){
         <span class="tag tag-tipo">${p.tipo}</span>
         ${p.precio&&p.precio!=='nan'?`<span class="tag tag-precio">${formatPrice(p.precio)}</span>`:''}
       </div>
+      <div class="ubicacion">
+        <div class="loc-block"><div class="loc-label">Pasillo</div><div class="loc-value">${p.pasillo}</div></div>
+        <div class="loc-block"><div class="loc-label">Góndola</div><div class="loc-value">${p.gondola}</div></div>
+        <div class="loc-block"><div class="loc-label">Bandeja</div><div class="loc-value">${p.bandeja}</div></div>
+      </div>
     </div>
   `).join('');
 }
