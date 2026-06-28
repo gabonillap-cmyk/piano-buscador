@@ -470,7 +470,7 @@ function renderCartRoute() {
     const items = prods.map(p => `
       <div class="step-item">
         <span class="step-item-name">• ${p.nombre}</span>
-        <span class="step-item-loc">G${p.gondola} · Bandeja ${p.bandeja}</span>
+        <span class="step-item-loc">Góndola ${p.gondola} · Bandeja ${p.bandeja}</span>
       </div>`).join('');
     return `
       <div class="route-step">
