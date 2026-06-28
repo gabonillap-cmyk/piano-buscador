@@ -8,69 +8,104 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; min-height: 100vh; }
 
-    header { background: #1a1a2e; color: white; padding: 18px 16px 20px; text-align: center; }
-    .logo { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.5px; }
+    header { background: #1a1a2e; color: white; padding: 14px 16px 16px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: #e63946; }
-    header p { font-size: 0.82rem; color: #aab4c8; margin-top: 3px; }
+    .header-sub { font-size: 0.75rem; color: #aab4c8; margin-top: 2px; }
 
-    .search-wrap { background: #1a1a2e; padding: 0 16px 18px; }
+    /* Carrito flotante */
+    #cart-btn {
+      position: relative; background: #e63946; border: none; border-radius: 12px;
+      padding: 8px 14px; color: white; font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+    }
+    #cart-count {
+      background: white; color: #e63946; border-radius: 50%;
+      width: 20px; height: 20px; font-size: 0.7rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      display: none;
+    }
+
+    .search-wrap { background: #1a1a2e; padding: 0 16px 16px; }
     .search-box { display: flex; align-items: center; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    .search-box input { flex: 1; border: none; outline: none; padding: 14px 16px; font-size: 1rem; color: #1a1a2e; }
-    .search-box button { background: #e63946; border: none; padding: 14px 18px; cursor: pointer; color: white; font-size: 1.1rem; }
+    .search-box input { flex: 1; border: none; outline: none; padding: 13px 16px; font-size: 1rem; color: #1a1a2e; }
+    .search-box button { background: #e63946; border: none; padding: 13px 16px; cursor: pointer; color: white; font-size: 1rem; }
 
-    /* ── MAPA (ahora justo bajo el buscador) ── */
-    #map-section { margin: 14px 16px 4px; background: white; border-radius: 16px; padding: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); display: none; }
+    /* ── VISTA DEL MAPA ── */
+    #map-section { margin: 12px 16px 4px; background: white; border-radius: 16px; padding: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); display: none; }
     #map-section.visible { display: block; }
-    .map-title { font-size: 0.78rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .map-title { font-size: 0.75rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
     #map-svg { width: 100%; height: auto; display: block; }
-    #map-legend { display:none; margin-top:10px; font-size:0.8rem; color:#555; text-align:center; background:#f0fdf4; border-radius:8px; padding:10px; line-height:1.6; }
 
-    /* producto destacado dentro del mapa */
     #map-product { display:none; margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid #e2e8f0; }
     #map-product-inner { display:flex; gap:12px; align-items:flex-start; }
-    #map-prod-img { width:72px; height:72px; min-width:72px; border-radius:10px; background:#f1f5f9; border:1.5px solid #e2e8f0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    #map-prod-img img { width:100%; height:100%; object-fit:cover; border-radius:9px; display:none; }
-    #map-prod-img .img-placeholder { font-size:2rem; color:#cbd5e1; }
+    #map-prod-img { width:68px; height:68px; min-width:68px; border-radius:10px; background:#f1f5f9; border:1.5px solid #e2e8f0; display:flex; align-items:center; justify-content:center; font-size:1.8rem; color:#cbd5e1; }
     #map-prod-info { flex:1; min-width:0; }
-    #map-product .card-name { font-size:0.95rem; font-weight:700; color:#1a1a2e; line-height:1.3; margin-bottom:6px; }
-    #map-product .card-meta { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+    #map-product .card-name { font-size:0.92rem; font-weight:700; color:#1a1a2e; line-height:1.3; margin-bottom:5px; }
+    #map-product .card-meta { display:flex; gap:6px; flex-wrap:wrap; }
     #map-product .ubicacion { display:flex; gap:8px; margin-top:8px; }
-    #map-product .loc-block { flex:1; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:10px; padding:8px 10px; text-align:center; }
-    #map-product .loc-label { font-size:0.65rem; color:#4ade80; text-transform:uppercase; letter-spacing:0.5px; font-weight:700; }
-    #map-product .loc-value { font-size:1.4rem; font-weight:800; color:#166534; line-height:1.1; }
+    #map-product .loc-block { flex:1; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:10px; padding:7px 8px; text-align:center; }
+    #map-product .loc-label { font-size:0.6rem; color:#4ade80; text-transform:uppercase; letter-spacing:0.5px; font-weight:700; }
+    #map-product .loc-value { font-size:1.3rem; font-weight:800; color:#166534; line-height:1.1; }
+
+    /* ── VISTA CARRITO ── */
+    #cart-section { margin: 12px 16px 4px; background: white; border-radius: 16px; padding: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.08); display: none; }
+    #cart-section.visible { display: block; }
+    .cart-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .cart-title { font-size:0.75rem; font-weight:700; color:#666; text-transform:uppercase; letter-spacing:0.5px; }
+    #clear-cart { background:none; border:none; color:#e63946; font-size:0.78rem; cursor:pointer; font-weight:600; }
+    #route-svg { width:100%; height:auto; display:block; }
+    #route-steps { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+    .route-step { display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:10px; background:#f8fafc; }
+    .step-num { width:24px; height:24px; border-radius:50%; background:#1a1a2e; color:white; font-size:0.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .step-info { flex:1; }
+    .step-pasillo { font-size:0.7rem; color:#888; font-weight:600; }
+    .step-productos { font-size:0.82rem; color:#1a1a2e; font-weight:500; line-height:1.4; }
+    #route-btn { width:100%; margin-top:10px; padding:12px; background:#1a1a2e; color:white; border:none; border-radius:12px; font-size:0.9rem; font-weight:700; cursor:pointer; }
 
     /* filters */
     .filter-bar { padding: 10px 16px 4px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
     .filter-bar::-webkit-scrollbar { display: none; }
-    .chip { background: white; border: 1.5px solid #dde3ee; border-radius: 20px; padding: 6px 14px; font-size: 0.78rem; white-space: nowrap; cursor: pointer; color: #444; transition: all 0.15s; }
+    .chip { background: white; border: 1.5px solid #dde3ee; border-radius: 20px; padding: 5px 12px; font-size: 0.76rem; white-space: nowrap; cursor: pointer; color: #444; transition: all 0.15s; }
     .chip.active { background: #1a1a2e; border-color: #1a1a2e; color: white; }
-
     #counter { padding: 6px 16px 4px; font-size: 0.8rem; color: #888; }
 
     /* cards */
     #results { padding: 0 16px 32px; display: flex; flex-direction: column; gap: 10px; }
-    .card { background: white; border-radius: 14px; padding: 14px 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 8px; animation: fadeIn 0.2s ease; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s; }
+    .card { background: white; border-radius: 14px; padding: 12px 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 7px; animation: fadeIn 0.2s ease; border: 2px solid transparent; transition: border-color 0.15s; }
     .card.selected { border-color: #22c55e; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-    .card-name { font-size: 0.95rem; font-weight: 600; color: #1a1a2e; line-height: 1.3; }
+    .card.in-cart { border-color: #f59e0b; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+    .card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+    .card-name { font-size:0.9rem; font-weight:600; color:#1a1a2e; line-height:1.3; flex:1; cursor:pointer; }
+    .add-cart-btn { background:#1a1a2e; border:none; border-radius:8px; padding:6px 10px; color:white; font-size:0.75rem; font-weight:700; cursor:pointer; white-space:nowrap; flex-shrink:0; transition:background 0.15s; }
+    .add-cart-btn.added { background:#f59e0b; }
     .card-meta { display: flex; gap: 6px; flex-wrap: wrap; }
-    .tag { font-size: 0.72rem; padding: 3px 9px; border-radius: 6px; font-weight: 500; }
+    .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; font-weight: 500; }
     .tag-tipo { background: #eef2ff; color: #3730a3; }
     .tag-precio { background: #fef3c7; color: #92400e; font-weight: 700; }
-    .ubicacion { display: flex; gap: 8px; margin-top: 2px; }
-    .loc-block { flex: 1; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 8px 10px; text-align: center; }
-    .loc-label { font-size: 0.65rem; color: #4ade80; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
-    .loc-value { font-size: 1.4rem; font-weight: 800; color: #166534; line-height: 1.1; }
-    .empty { text-align: center; padding: 60px 20px; color: #999; }
-    .empty .icon { font-size: 3rem; margin-bottom: 12px; }
-    .empty p { font-size: 0.95rem; }
+    .ubicacion { display: flex; gap: 8px; }
+    .loc-block { flex: 1; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 7px 8px; text-align: center; cursor:pointer; }
+    .loc-label { font-size: 0.6rem; color: #4ade80; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+    .loc-value { font-size: 1.3rem; font-weight: 800; color: #166534; line-height: 1.1; }
+    .empty { text-align: center; padding: 50px 20px; color: #999; }
+    .empty .icon { font-size: 2.5rem; margin-bottom: 10px; }
+
+    /* SVG animacion */
+    @keyframes dash { to { stroke-dashoffset:-200; } }
+    .route-animated { animation: dash 6s linear infinite; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">piano<span>.</span></div>
-  <p>¿Dónde está tu producto?</p>
+  <div>
+    <div class="logo">piano<span>.</span></div>
+    <div class="header-sub">¿Dónde está tu producto?</div>
+  </div>
+  <button id="cart-btn" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </button>
 </header>
 
 <div class="search-wrap">
@@ -80,15 +115,12 @@
   </div>
 </div>
 
-<!-- MAPA justo bajo el buscador -->
+<!-- MAPA producto individual -->
 <div id="map-section">
   <div class="map-title">📍 Cómo llegar</div>
   <div id="map-product">
     <div id="map-product-inner">
-      <div id="map-prod-img">
-        <img id="map-prod-img-tag" src="" alt=""/>
-        <span class="img-placeholder">📦</span>
-      </div>
+      <div id="map-prod-img">📦</div>
       <div id="map-prod-info">
         <div class="card-name" id="map-prod-name"></div>
         <div class="card-meta" id="map-prod-meta"></div>
@@ -102,27 +134,22 @@
   </div>
   <svg id="map-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
     <rect x="0" y="0" width="320" height="200" fill="#f8fafc"/>
-    <!-- corredores peatonales -->
     <rect x="0" y="150" width="320" height="50" fill="#eef2f7"/>
     <rect x="0" y="0" width="30" height="200" fill="#eef2f7"/>
     <rect x="290" y="0" width="30" height="200" fill="#eef2f7"/>
     <rect x="0" y="0" width="320" height="24" fill="#eef2f7"/>
-
-    <!-- Zonas (grilla 4x3) -->
-    <rect id="zone-C" x="34"  y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="zone-C" x="34" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-I" x="102" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-J" x="170" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-F" x="238" y="28" width="48" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
-    <rect id="zone-A" x="34"  y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="zone-A" x="34" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-B" x="102" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-E" x="170" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-D" x="238" y="76" width="48" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
-    <rect id="zone-G" x="34"  y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="zone-G" x="34" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-H" x="102" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-K" x="170" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
     <rect id="zone-L" x="238" y="124" width="48" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
-
-    <!-- Labels siempre visibles en gris -->
     <text id="lbl-C" x="63"  y="53"  text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">C</text>
     <text id="lbl-I" x="131" y="53"  text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">I</text>
     <text id="lbl-J" x="199" y="53"  text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">J</text>
@@ -135,19 +162,70 @@
     <text id="lbl-H" x="131" y="139" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">H</text>
     <text id="lbl-K" x="199" y="139" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">K</text>
     <text id="lbl-L" x="262" y="139" text-anchor="middle" font-size="10" fill="#94a3b8" font-family="Arial" font-weight="bold">L</text>
-
-    <!-- Ruta animada -->
-    <polyline id="route-line" points="" fill="none" stroke="#e63946" stroke-width="2.5"
-      stroke-dasharray="6,4" stroke-linecap="round" opacity="0"/>
-
-    <!-- Marcador destino -->
+    <polyline id="route-line" points="" fill="none" stroke="#e63946" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" opacity="0"/>
     <g id="dest-marker" style="display:none">
       <circle id="pulse1" r="14" fill="#e63946" opacity="0.15"/>
-      <circle id="pulse2" r="9"  fill="#e63946" opacity="0.25"/>
+      <circle id="pulse2" r="9" fill="#e63946" opacity="0.25"/>
       <circle r="5" fill="#e63946"/>
       <text id="dest-label" y="-12" text-anchor="middle" font-size="7.5" fill="#e63946" font-family="Arial" font-weight="bold">PASILLO A</text>
     </g>
+    <rect x="110" y="178" width="100" height="20" rx="5" fill="#1a1a2e"/>
+    <text x="160" y="192" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="bold">ENTRADA</text>
+    <g transform="translate(160,168)">
+      <circle r="7" fill="#22c55e"/>
+      <text y="4" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="bold">★</text>
+    </g>
+    <text x="160" y="160" text-anchor="middle" font-size="6.5" fill="#22c55e" font-family="Arial" font-weight="bold">Usted está aquí</text>
+    <style>
+      @keyframes pulse  { 0%,100% { r:9;  opacity:.25; } 50% { r:16; opacity:0; } }
+      @keyframes pulse2 { 0%,100% { r:14; opacity:.15; } 50% { r:22; opacity:0; } }
+      #pulse1 { animation: pulse2 1.6s ease-in-out infinite; }
+      #pulse2 { animation: pulse  1.6s ease-in-out infinite; }
+      #route-line.active { animation: dash 6s linear infinite; opacity:1; }
+    </style>
+  </svg>
+</div>
 
+<!-- VISTA CARRITO con mapa de ruta -->
+<div id="cart-section">
+  <div class="cart-header">
+    <span class="cart-title">🛒 Mi lista de compras</span>
+    <button id="clear-cart" onclick="clearCart()">Vaciar</button>
+  </div>
+  <svg id="route-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="320" height="200" fill="#f8fafc"/>
+    <rect x="0" y="150" width="320" height="50" fill="#eef2f7"/>
+    <rect x="0" y="0" width="30" height="200" fill="#eef2f7"/>
+    <rect x="290" y="0" width="30" height="200" fill="#eef2f7"/>
+    <rect x="0" y="0" width="320" height="24" fill="#eef2f7"/>
+    <rect id="rz-C" x="34" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-I" x="102" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-J" x="170" y="28" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-F" x="238" y="28" width="48" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-A" x="34" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-B" x="102" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-E" x="170" y="76" width="58" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-D" x="238" y="76" width="48" height="38" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-G" x="34" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-H" x="102" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-K" x="170" y="124" width="58" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect id="rz-L" x="238" y="124" width="48" height="22" rx="5" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="63"  y="53"  text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">C</text>
+    <text x="131" y="53"  text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">I</text>
+    <text x="199" y="53"  text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">J</text>
+    <text x="262" y="53"  text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">F</text>
+    <text x="63"  y="101" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">A</text>
+    <text x="131" y="101" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">B</text>
+    <text x="199" y="101" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">E</text>
+    <text x="262" y="101" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">D</text>
+    <text x="63"  y="139" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">G</text>
+    <text x="131" y="139" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">H</text>
+    <text x="199" y="139" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">K</text>
+    <text x="262" y="139" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="Arial" font-weight="bold">L</text>
+    <!-- Ruta del carrito (línea multi-parada) -->
+    <polyline id="cart-route-line" points="" fill="none" stroke="#e63946" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" opacity="0"/>
+    <!-- Marcadores numerados por parada -->
+    <g id="cart-markers"></g>
     <!-- Entrada -->
     <rect x="110" y="178" width="100" height="20" rx="5" fill="#1a1a2e"/>
     <text x="160" y="192" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="bold">ENTRADA</text>
@@ -156,27 +234,17 @@
       <text y="4" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="bold">★</text>
     </g>
     <text x="160" y="160" text-anchor="middle" font-size="6.5" fill="#22c55e" font-family="Arial" font-weight="bold">Usted está aquí</text>
-
     <style>
-      @keyframes pulse  { 0%,100% { r:9;  opacity:.25; } 50% { r:16; opacity:0; } }
-      @keyframes pulse2 { 0%,100% { r:14; opacity:.15; } 50% { r:22; opacity:0; } }
-      @keyframes dash   { to { stroke-dashoffset:-200; } }
-      #pulse1 { animation: pulse2 1.6s ease-in-out infinite; }
-      #pulse2 { animation: pulse  1.6s ease-in-out infinite; }
-      #route-line.active { animation: dash 6s linear infinite; opacity:1; }
+      #cart-route-line.active { animation: dash 8s linear infinite; opacity:1; }
     </style>
   </svg>
-  <div id="map-legend"></div>
+  <div id="route-steps"></div>
 </div>
 
-<!-- FILTERS -->
 <div class="filter-bar" id="filters"></div>
 <div id="counter"></div>
 <div id="results">
-  <div class="empty">
-    <div class="icon">🔍</div>
-    <p>Escribe el nombre del producto para encontrar su ubicación</p>
-  </div>
+  <div class="empty"><div class="icon">🔍</div><p>Escribe el nombre del producto para encontrar su ubicación</p></div>
 </div>
 
 <script>
@@ -213,36 +281,269 @@ const PASILLO_NOMBRES = {
   G:'Aseo',H:'Cafetería',K:'Naturales',L:'Rotisería',
   T:'Terraza',M:'Cigarros',N:'Flores',Z:'Varios',
 };
-const BANDEJA_DESC = ['','Bandeja 1 – muy abajo','Bandeja 2 – abajo','Bandeja 3 – centro','Bandeja 4 – alto','Bandeja 5 – muy alto'];
-const ENTRY = {x:160,y:168};
+const BANDEJA_DESC=['','muy abajo','abajo','centro','alto','muy alto'];
 
-// Rutas en forma de L: corredor inferior → corredor vertical → entrar al pasillo por el costado
-// Corredores verticales: x=97 (entre col1-col2), x=165 (entre col2-col3), x=233 (entre col3-col4)
-// Col1 usa x=97 y entra por la derecha de la zona; col2/3/4 entran por la izquierda
+// Orden lógico de recolección: serpiente desde entrada hacia el fondo
+// Fila 3 (más cerca de entrada): izq→der, Fila 2: der→izq, Fila 1: izq→der
+const COLLECT_ORDER = ['G','H','K','L','T','M','N','Z','D','E','B','A','C','I','J','F'];
+
 const ROUTES = {
-  C: [[160,168],[97,168],[97,47],[63,47]],
-  I: [[160,168],[97,168],[97,47],[131,47]],
-  J: [[160,168],[165,168],[165,47],[199,47]],
-  F: [[160,168],[233,168],[233,47],[262,47]],
-  A: [[160,168],[97,168],[97,95],[63,95]],
-  B: [[160,168],[97,168],[97,95],[131,95]],
-  E: [[160,168],[165,168],[165,95],[199,95]],
-  D: [[160,168],[233,168],[233,95],[262,95]],
-  G: [[160,168],[97,168],[97,135],[63,135]],
-  H: [[160,168],[97,168],[97,135],[131,135]],
-  K: [[160,168],[165,168],[165,135],[199,135]],
-  L: [[160,168],[233,168],[233,135],[262,135]],
-  T: [[160,168],[97,168],[97,135],[63,135]],
-  M: [[160,168],[97,168],[97,135],[131,135]],
-  N: [[160,168],[165,168],[165,135],[199,135]],
-  Z: [[160,168],[233,168],[233,135],[262,135]],
+  C:[[160,168],[97,168],[97,47],[63,47]],
+  I:[[160,168],[97,168],[97,47],[131,47]],
+  J:[[160,168],[165,168],[165,47],[199,47]],
+  F:[[160,168],[233,168],[233,47],[262,47]],
+  A:[[160,168],[97,168],[97,95],[63,95]],
+  B:[[160,168],[97,168],[97,95],[131,95]],
+  E:[[160,168],[165,168],[165,95],[199,95]],
+  D:[[160,168],[233,168],[233,95],[262,95]],
+  G:[[160,168],[97,168],[97,135],[63,135]],
+  H:[[160,168],[97,168],[97,135],[131,135]],
+  K:[[160,168],[165,168],[165,135],[199,135]],
+  L:[[160,168],[233,168],[233,135],[262,135]],
+  T:[[160,168],[97,168],[97,135],[63,135]],
+  M:[[160,168],[97,168],[97,135],[131,135]],
+  N:[[160,168],[165,168],[165,135],[199,135]],
+  Z:[[160,168],[233,168],[233,135],[262,135]],
 };
 
-const tipos = [...new Set(PRODUCTS.map(p=>p.tipo))].filter(t=>t!=='nan').sort();
-let activeFilter = null;
+// ── CARRITO ──
+let cart = []; // array de objetos producto
 
-const filterBar = document.getElementById('filters');
-const allChip = document.createElement('div');
+function toggleCart() {
+  const cs = document.getElementById('cart-section');
+  const ms = document.getElementById('map-section');
+  if (cart.length === 0) return;
+  if (cs.classList.contains('visible')) {
+    cs.classList.remove('visible');
+    if (lastSelected) ms.classList.add('visible');
+  } else {
+    ms.classList.remove('visible');
+    cs.classList.add('visible');
+    renderCartRoute();
+  }
+}
+
+function addToCart(p) {
+  if (cart.find(c => c.sku === p.sku && c.nombre === p.nombre)) {
+    removeFromCart(p);
+    return;
+  }
+  cart.push(p);
+  updateCartUI();
+}
+
+function removeFromCart(p) {
+  cart = cart.filter(c => !(c.sku === p.sku && c.nombre === p.nombre));
+  updateCartUI();
+}
+
+function isInCart(p) {
+  return !!cart.find(c => c.sku === p.sku && c.nombre === p.nombre);
+}
+
+function clearCart() {
+  cart = [];
+  updateCartUI();
+  document.getElementById('cart-section').classList.remove('visible');
+  document.getElementById('map-section').classList.add('visible');
+  renderSearch();
+}
+
+function updateCartUI() {
+  const count = document.getElementById('cart-count');
+  count.textContent = cart.length;
+  count.style.display = cart.length > 0 ? 'flex' : 'none';
+  // Actualizar botones en tarjetas
+  document.querySelectorAll('.add-cart-btn').forEach(btn => {
+    const nombre = btn.dataset.nombre;
+    const inC = cart.find(c => c.nombre === nombre);
+    btn.textContent = inC ? '✓ En lista' : '+ Lista';
+    btn.classList.toggle('added', !!inC);
+  });
+  document.querySelectorAll('.card').forEach(card => {
+    const nombre = card.dataset.nombre;
+    card.classList.toggle('in-cart', !!cart.find(c => c.nombre === nombre));
+  });
+}
+
+// Info de cada pasillo: fila, columna, posición centro
+const ZONE_INFO = {
+  G:{row:3,col:1,x:63,y:135},  H:{row:3,col:2,x:131,y:135},
+  K:{row:3,col:3,x:199,y:135}, L:{row:3,col:4,x:262,y:135},
+  D:{row:2,col:4,x:262,y:95},  E:{row:2,col:3,x:199,y:95},
+  B:{row:2,col:2,x:131,y:95},  A:{row:2,col:1,x:63,y:95},
+  C:{row:1,col:1,x:63,y:47},   I:{row:1,col:2,x:131,y:47},
+  J:{row:1,col:3,x:199,y:47},  F:{row:1,col:4,x:262,y:47},
+  T:{row:3,col:1,x:63,y:135},  M:{row:3,col:2,x:131,y:135},
+  N:{row:3,col:3,x:199,y:135}, Z:{row:3,col:4,x:262,y:135},
+};
+// Corredor vertical a la izquierda de cada columna
+function corridorLeft(col) { return [97,97,165,233][col-1]; }
+
+function buildChainPath(stops) {
+  // Genera una polyline encadenada desde entrada → stop1 → stop2 → ... sin volver
+  const pts = [[160,168]];
+  let prev = null;
+  stops.forEach(pa => {
+    const z = ZONE_INFO[pa]; if (!z) return;
+    if (!prev) {
+      // Desde entrada: corredor horizontal → corredor vertical → entrar zona
+      const cx = corridorLeft(z.col);
+      pts.push([cx, 168]);
+      pts.push([cx, z.y]);
+      pts.push([z.x, z.y]);
+    } else if (z.row === prev.row) {
+      // Misma fila: salir al corredor entre columnas y entrar a la zona
+      const minCol = Math.min(z.col, prev.col);
+      const cx = corridorLeft(minCol + (z.col > prev.col ? 1 : 0));
+      pts.push([cx, z.y]);
+      pts.push([z.x, z.y]);
+    } else {
+      // Diferente fila: ir al corredor lateral más cercano, cambiar de fila, entrar zona
+      const exitCx = corridorLeft(prev.col < 3 ? prev.col : prev.col - 1);
+      const entryCx = corridorLeft(z.col < 3 ? z.col : z.col - 1);
+      pts.push([exitCx, prev.y]);  // salir al corredor
+      pts.push([entryCx, prev.y]); // moverse horizontal si necesario
+      pts.push([entryCx, z.y]);    // cambiar de fila
+      pts.push([z.x, z.y]);        // entrar zona
+    }
+    prev = z;
+  });
+  // Deduplicar puntos iguales consecutivos
+  return pts.filter((p,i) => i===0 || !(p[0]===pts[i-1][0] && p[1]===pts[i-1][1]));
+}
+
+function renderCartRoute() {
+  if (cart.length === 0) return;
+
+  // Agrupar por pasillo y ordenar según serpiente
+  const byPasillo = {};
+  cart.forEach(p => {
+    const pa = ZONE_ALIAS[p.pasillo] || p.pasillo;
+    if (!byPasillo[pa]) byPasillo[pa] = [];
+    byPasillo[pa].push(p);
+  });
+  const orderedPasillos = COLLECT_ORDER
+    .map(p => ZONE_ALIAS[p] || p)
+    .filter((p,i,a) => a.indexOf(p) === i)
+    .filter(p => byPasillo[p]);
+
+  // Reset mapa
+  ['C','I','J','F','A','B','E','D','G','H','K','L'].forEach(p => {
+    const el = document.getElementById('rz-'+p);
+    if (el) { el.setAttribute('fill','#e2e8f0'); el.setAttribute('stroke','#cbd5e1'); el.setAttribute('stroke-width','1'); }
+  });
+  document.getElementById('cart-markers').innerHTML = '';
+
+  // Colorear pasillos del carrito
+  orderedPasillos.forEach((pa, idx) => {
+    const el = document.getElementById('rz-'+pa);
+    if (el) { el.setAttribute('fill',ZONE_COLORS[pa]||'#fde68a'); el.setAttribute('stroke',ZONE_STROKE[pa]||'#fbbf24'); el.setAttribute('stroke-width','2'); }
+    const pos = ZONE_POS[pa]; if (!pos) return;
+    // Marcador numerado
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('transform',`translate(${pos.x},${pos.y})`);
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('r','10'); circle.setAttribute('fill','#1a1a2e');
+    const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+    txt.setAttribute('text-anchor','middle'); txt.setAttribute('y','4');
+    txt.setAttribute('font-size','8'); txt.setAttribute('fill','white');
+    txt.setAttribute('font-family','Arial'); txt.setAttribute('font-weight','bold');
+    txt.textContent = idx+1;
+    g.appendChild(circle); g.appendChild(txt);
+    document.getElementById('cart-markers').appendChild(g);
+  });
+
+  // Construir y dibujar ruta encadenada
+  const pts = buildChainPath(orderedPasillos);
+  const routeEl = document.getElementById('cart-route-line');
+  routeEl.setAttribute('points', pts.map(p=>p.join(',')).join(' '));
+  routeEl.classList.add('active');
+
+  // Pasos de texto
+  const steps = document.getElementById('route-steps');
+  steps.innerHTML = orderedPasillos.map((pa, idx) => {
+    const prods = byPasillo[pa];
+    const nombres = prods.map(p => `• ${p.nombre}`).join('<br>');
+    return `
+      <div class="route-step">
+        <div class="step-num">${idx+1}</div>
+        <div class="step-info">
+          <div class="step-pasillo">Pasillo ${pa} · ${PASILLO_NOMBRES[pa]||''}</div>
+          <div class="step-productos">${nombres}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── MAPA INDIVIDUAL ──
+let lastSelected = null;
+
+function resetZones() {
+  ['C','I','J','F','A','B','E','D','G','H','K','L'].forEach(p => {
+    const el = document.getElementById('zone-'+p);
+    if (el) { el.setAttribute('fill','#e2e8f0'); el.setAttribute('stroke','#cbd5e1'); el.setAttribute('stroke-width','1'); }
+    const lbl = document.getElementById('lbl-'+p);
+    if (lbl) { lbl.setAttribute('fill','#94a3b8'); lbl.setAttribute('font-size','10'); }
+  });
+}
+
+function showMap(p) {
+  lastSelected = p;
+  resetZones();
+  const section = document.getElementById('map-section');
+  section.classList.add('visible');
+  document.getElementById('cart-section').classList.remove('visible');
+
+  const pasillo = p.pasillo; const gondola = p.gondola; const bandeja = p.bandeja;
+  const visZone = ZONE_ALIAS[pasillo]||pasillo;
+  const pos = ZONE_POS[pasillo]||ZONE_POS[visZone];
+
+  const zoneEl = document.getElementById('zone-'+visZone);
+  if (zoneEl) { zoneEl.setAttribute('fill',ZONE_COLORS[pasillo]||'#fde68a'); zoneEl.setAttribute('stroke',ZONE_STROKE[pasillo]||'#fbbf24'); zoneEl.setAttribute('stroke-width','2.5'); }
+  const lblEl = document.getElementById('lbl-'+visZone);
+  if (lblEl) { lblEl.setAttribute('fill',ZONE_TEXT[pasillo]||'#1a1a2e'); lblEl.setAttribute('font-size','11'); }
+
+  const marker = document.getElementById('dest-marker');
+  marker.style.display='block';
+  marker.setAttribute('transform',`translate(${pos.x},${pos.y})`);
+  document.getElementById('dest-label').textContent='PASILLO '+pasillo;
+
+  const routeEl = document.getElementById('route-line');
+  const routePts = ROUTES[pasillo]||[[160,168],[pos.x,168],[pos.x,pos.y]];
+  routeEl.setAttribute('points', routePts.map(pt=>pt.join(',')).join(' '));
+  routeEl.classList.add('active');
+
+  // Info producto en mapa
+  document.getElementById('map-product').style.display='block';
+  document.getElementById('map-prod-name').textContent=p.nombre;
+  document.getElementById('map-prod-pasillo').textContent=pasillo;
+  document.getElementById('map-prod-gondola').textContent=gondola;
+  document.getElementById('map-prod-bandeja').textContent=bandeja;
+  const meta=document.getElementById('map-prod-meta');
+  meta.innerHTML=`<span class="tag tag-tipo">${p.tipo}</span>${p.precio&&p.precio!=='nan'?`<span class="tag tag-precio">${formatPrice(p.precio)}</span>`:''}`
+  section.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function hideMap() {
+  document.getElementById('map-section').classList.remove('visible');
+  document.getElementById('dest-marker').style.display='none';
+  document.getElementById('map-product').style.display='none';
+  const r=document.getElementById('route-line');
+  r.classList.remove('active'); r.setAttribute('points','');
+  resetZones();
+}
+
+function formatPrice(pr) {
+  const n=parseFloat(pr); if(isNaN(n)) return '';
+  return '$'+Math.round(n).toLocaleString('es-CL');
+}
+
+// ── FILTROS ──
+const tipos=[...new Set(PRODUCTS.map(p=>p.tipo))].filter(t=>t!=='nan').sort();
+let activeFilter=null;
+const filterBar=document.getElementById('filters');
+const allChip=document.createElement('div');
 allChip.className='chip active'; allChip.textContent='Todos';
 allChip.onclick=()=>setFilter(null,allChip);
 filterBar.appendChild(allChip);
@@ -256,132 +557,63 @@ tipos.forEach(tipo=>{
 function setFilter(tipo,el){
   activeFilter=tipo;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  search();
+  el.classList.add('active'); renderSearch();
 }
 
 function clearSearch(){
   document.getElementById('search').value='';
-  hideMap(); search();
+  hideMap(); renderSearch();
 }
 
-function formatPrice(p){
-  const n=parseFloat(p);
-  if(isNaN(n)) return '';
-  return '$'+Math.round(n).toLocaleString('es-CL');
-}
-
-function resetZones(){
-  ['C','I','J','F','A','B','E','D','G','H','K','L'].forEach(p=>{
-    const el=document.getElementById('zone-'+p);
-    if(el){ el.setAttribute('fill','#e2e8f0'); el.setAttribute('stroke','#cbd5e1'); el.setAttribute('stroke-width','1'); }
-    const lbl=document.getElementById('lbl-'+p);
-    if(lbl){ lbl.setAttribute('fill','#94a3b8'); lbl.setAttribute('font-size','10'); }
-  });
-}
-
-function showMap(pasillo,gondola,bandeja){
-  resetZones();
-  const section=document.getElementById('map-section');
-  section.classList.add('visible');
-
-  const visZone=ZONE_ALIAS[pasillo]||pasillo;
-  const pos=ZONE_POS[pasillo]||ZONE_POS[visZone];
-
-  const zoneEl=document.getElementById('zone-'+visZone);
-  if(zoneEl){
-    zoneEl.setAttribute('fill',ZONE_COLORS[pasillo]||'#fde68a');
-    zoneEl.setAttribute('stroke',ZONE_STROKE[pasillo]||'#fbbf24');
-    zoneEl.setAttribute('stroke-width','2.5');
-  }
-  const lblEl=document.getElementById('lbl-'+visZone);
-  if(lblEl){
-    lblEl.setAttribute('fill',ZONE_TEXT[pasillo]||'#1a1a2e');
-    lblEl.setAttribute('font-size','11');
-  }
-
-  const marker=document.getElementById('dest-marker');
-  marker.style.display='block';
-  marker.setAttribute('transform',`translate(${pos.x},${pos.y})`);
-  document.getElementById('dest-label').textContent='PASILLO '+pasillo;
-
-  const routeEl=document.getElementById('route-line');
-  const routePts=(ROUTES[pasillo]||[[ENTRY.x,ENTRY.y],[pos.x,ENTRY.y],[pos.x,pos.y]]);
-  routeEl.setAttribute('points', routePts.map(p=>p.join(',')).join(' '));
-  routeEl.classList.add('active');
-
-  document.getElementById('map-legend').style.display='none';
-}
-
-function updateMapProduct(p){
-  document.getElementById('map-product').style.display='block';
-  document.getElementById('map-prod-name').textContent=p.nombre;
-  document.getElementById('map-prod-pasillo').textContent=p.pasillo;
-  document.getElementById('map-prod-gondola').textContent=p.gondola;
-  document.getElementById('map-prod-bandeja').textContent=p.bandeja;
-  const meta=document.getElementById('map-prod-meta');
-  meta.innerHTML=`<span class="tag tag-tipo">${p.tipo}</span>${p.precio&&p.precio!=='nan'?`<span class="tag tag-precio">${formatPrice(p.precio)}</span>`:''}`;
-}
-
-function hideMap(){
-  document.getElementById('map-section').classList.remove('visible');
-  document.getElementById('dest-marker').style.display='none';
-  document.getElementById('map-product').style.display='none';
-  const r=document.getElementById('route-line');
-  r.classList.remove('active'); r.setAttribute('points','');
-  resetZones();
-}
-
-function search(){
+function renderSearch() {
   const q=document.getElementById('search').value.trim().toLowerCase();
   const results=document.getElementById('results');
   const counter=document.getElementById('counter');
-
   let filtered=PRODUCTS;
   if(activeFilter) filtered=filtered.filter(p=>p.tipo===activeFilter);
   if(q.length>1) filtered=filtered.filter(p=>p.nombre.toLowerCase().includes(q));
-
   if(!q&&!activeFilter){
     results.innerHTML=`<div class="empty"><div class="icon">🔍</div><p>Escribe el nombre del producto para encontrar su ubicación</p></div>`;
     counter.textContent=''; hideMap(); return;
   }
-
   const shown=filtered.slice(0,50);
-  counter.textContent=filtered.length===0?'':`${filtered.length} resultado${filtered.length!==1?'s':''}${filtered.length>50?' (mostrando los primeros 50)':''}`;
-
+  counter.textContent=filtered.length===0?'':`${filtered.length} resultado${filtered.length!==1?'s':''}${filtered.length>50?' (mostrando primeros 50)':''}`;
   if(shown.length===0){
     results.innerHTML=`<div class="empty"><div class="icon">😕</div><p>No encontramos "<strong>${q}</strong>"</p></div>`;
     hideMap(); return;
   }
-
-  showMap(shown[0].pasillo,shown[0].gondola,shown[0].bandeja);
-  updateMapProduct(shown[0]);
-
-  results.innerHTML=shown.map((p,idx)=>`
-    <div class="card${idx===0?' selected':''}" onclick="selectProduct(this,${JSON.stringify(p)})">
-      <div class="card-name">${p.nombre}</div>
+  showMap(shown[0]);
+  results.innerHTML=shown.map((p,idx)=>{
+    const inC=isInCart(p);
+    return `<div class="card${idx===0?' selected':''}${inC?' in-cart':''}" data-nombre="${p.nombre}">
+      <div class="card-top">
+        <div class="card-name" onclick="selectProduct(${JSON.stringify(p).replace(/"/g,'&quot;')})">${p.nombre}</div>
+        <button class="add-cart-btn${inC?' added':''}" data-nombre="${p.nombre}"
+          onclick="addToCart(${JSON.stringify(p).replace(/"/g,'&quot;')}); updateCartUI();">
+          ${inC?'✓ En lista':'+ Lista'}
+        </button>
+      </div>
       <div class="card-meta">
         <span class="tag tag-tipo">${p.tipo}</span>
         ${p.precio&&p.precio!=='nan'?`<span class="tag tag-precio">${formatPrice(p.precio)}</span>`:''}
       </div>
-      <div class="ubicacion">
+      <div class="ubicacion" onclick="selectProduct(${JSON.stringify(p).replace(/"/g,'&quot;')})">
         <div class="loc-block"><div class="loc-label">Pasillo</div><div class="loc-value">${p.pasillo}</div></div>
         <div class="loc-block"><div class="loc-label">Góndola</div><div class="loc-value">${p.gondola}</div></div>
         <div class="loc-block"><div class="loc-label">Bandeja</div><div class="loc-value">${p.bandeja}</div></div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
-function selectProduct(el,p){
+function selectProduct(p) {
   document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  showMap(p.pasillo,p.gondola,p.bandeja);
-  updateMapProduct(p);
-  document.getElementById('map-section').scrollIntoView({behavior:'smooth',block:'nearest'});
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(c => { if(c.dataset.nombre===p.nombre) c.classList.add('selected'); });
+  showMap(p);
 }
 
-document.getElementById('search').addEventListener('input',search);
+document.getElementById('search').addEventListener('input', renderSearch);
 </script>
 </body>
 </html>
